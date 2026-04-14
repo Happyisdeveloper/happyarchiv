@@ -228,6 +228,61 @@ window.__ARCHIVE_DATA__ = {
       "collapsed": false
     }
   ],
-  "files": [],
-  "exportedAt": "2026-04-14T19:42:41.209Z"
+  "files": [
+    {
+      "id": 1,
+      "name": "Reas.jpeg",
+      "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
+      "tags": [
+        "Reas",
+        "Hof"
+      ],
+      "date": "02.02.2025",
+      "size": "671 KB",
+      "media": [
+        {
+          "name": "WhatsApp Image 2026-04-14 at 23.39.01.jpeg",
+          "webPath": "media/1_0.jpeg"
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": 2,
+      "name": "Hey Morik.jpeg",
+      "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
+      "tags": [
+        "Hof",
+        "Hey Morik"
+      ],
+      "date": "02.02.2025",
+      "size": "432 KB",
+      "media": [
+        {
+          "name": "asdsad.jpeg",
+          "webPath": "media/2_0.jpeg"
+        }
+      ],
+      "published": true
+    },
+    {
+      "id": 3,
+      "name": "Opie.jpeg",
+      "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
+      "tags": [
+        "Opie",
+        "Hof"
+      ],
+      "date": "02.02.2025",
+      "size": "505 KB",
+      "media": [
+        {
+          "name": "asdasdsasaa.jpeg",
+          "webPath": "media/3_0.jpeg"
+        }
+      ],
+      "published": true
+    }
+  ],
+  "exportedAt": "2026-04-14T21:10:48.653Z"
 };
