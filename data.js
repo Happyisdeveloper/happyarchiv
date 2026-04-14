@@ -155,6 +155,12 @@ window.__ARCHIVE_DATA__ = {
       "dot": "#730d77",
       "bg": "#cb43d0",
       "color": "#dc56e1"
+    },
+    {
+      "name": "deneme",
+      "dot": "#eee",
+      "bg": "#f5f5f5",
+      "color": "#555"
     }
   ],
   "folderTree": [
@@ -168,6 +174,25 @@ window.__ARCHIVE_DATA__ = {
       "id": 2,
       "name": "Duvarlarım",
       "children": [],
+      "collapsed": false
+    },
+    {
+      "id": 8,
+      "name": "Paps",
+      "children": [
+        {
+          "id": 9,
+          "name": "Black Book",
+          "children": [],
+          "collapsed": false
+        },
+        {
+          "id": 10,
+          "name": "Duvarlar",
+          "children": [],
+          "collapsed": false
+        }
+      ],
       "collapsed": false
     },
     {
@@ -204,5 +229,5 @@ window.__ARCHIVE_DATA__ = {
     }
   ],
   "files": [],
-  "exportedAt": "2026-04-14T17:58:29.483Z"
+  "exportedAt": "2026-04-14T19:03:49.926Z"
 };
