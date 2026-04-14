@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Archive</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fafaf9;--bg2:#f5f5f4;--bg3:#fff;--text:#1a1a1a;--text2:#6b7280;--text3:#9ca3af;--info:#2563eb;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--rad:8px;--radl:12px}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--bg2:#1c1c1e;--bg3:#2c2c2e;--text:#f2f2f7;--text2:#8e8e93;--text3:#636366;--info:#60a5fa;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14)}}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.header{padding:14px 24px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--bg3);position:sticky;top:0;z-index:10;flex-wrap:wrap}
+.logo{font-family:'Great Vibes',cursive;font-size:28px;color:var(--text);text-decoration:none;white-space:nowrap;cursor:pointer}
+.search-box{font-size:13px;padding:6px 12px;border:0.5px solid var(--border2);border-radius:var(--rad);background:var(--bg2);color:var(--text);width:200px;outline:none}
+.search-box:focus{border-color:var(--info)}
+.layout{display:flex;flex:1}
+.sidebar{width:220px;flex-shrink:0;border-right:0.5px solid var(--border);padding:8px;overflow-y:auto;background:var(--bg2)}
+.main{flex:1;overflow-y:auto;min-width:0;display:flex;flex-direction:column}
+.sb-title{font-size:11px;font-weight:500;color:var(--text3);padding:6px 10px 3px;letter-spacing:0.5px;text-transform:uppercase}
+.sb-item{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:var(--rad);cursor:pointer;font-size:13px;color:var(--text);transition:background 0.1s;user-select:none;min-width:0}
+.sb-item:hover{background:var(--bg3)}
+.sb-item.active{background:var(--bg3);font-weight:500}
+.sb-badge{font-size:10px;border-radius:100px;padding:1px 5px;background:var(--bg2);color:var(--text2);margin-left:auto;flex-shrink:0;border:0.5px solid var(--border)}
+.sb-toggle{background:none;border:none;cursor:pointer;color:var(--text3);font-size:10px;width:14px;height:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.15s}
+.sb-toggle.open{transform:rotate(90deg)}
+.sb-space{width:14px;flex-shrink:0}
+.tag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.tag-bar{padding:10px 20px;border-bottom:0.5px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:var(--bg3)}
+.tag-pill{font-size:11px;padding:3px 10px;border-radius:100px;cursor:pointer;border:0.5px solid var(--border);background:var(--bg2);color:var(--text2);transition:all 0.1s;white-space:nowrap}
+.tag-pill:hover{border-color:var(--border2)}
+.tag-pill.active{border-color:transparent;font-weight:500}
+.breadcrumb{padding:10px 20px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:5px;font-size:13px;background:var(--bg3)}
+.bc-link{color:var(--info);cursor:pointer}.bc-link:hover{text-decoration:underline}
+.bc-sep{color:var(--text3)}.bc-cur{font-weight:500}
+.content{padding:20px;flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.card{background:var(--bg3);border:0.5px solid var(--border);border-radius:var(--radl);overflow:hidden;cursor:pointer;transition:border-color 0.15s,transform 0.15s}
+.card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.card-thumb{width:100%;height:160px;object-fit:cover;display:block}
+.card-thumb-placeholder{width:100%;height:160px;display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--bg2)}
+.card-count{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.5);color:#fff;font-size:10px;padding:2px 7px;border-radius:100px}
+.card-thumb-wrap{position:relative}
+.card-body{padding:12px}
+.card-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;word-break:break-word}
+.card-folder{font-size:11px;color:var(--info);cursor:pointer;margin-top:2px}.card-folder:hover{text-decoration:underline}
+.card-meta{font-size:11px;color:var(--text2);margin-top:2px}
+.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.card-tag{font-size:10px;padding:2px 7px;border-radius:100px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:50;display:flex;align-items:center;justify-content:center}
+.lb-inner{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:56px 64px}
+.lb-inner img,.lb-inner video{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lb-close{position:absolute;top:16px;right:18px;background:rgba(255,255,255,0.12);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-close:hover{background:rgba(255,255,255,0.22)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lb-nav:hover{background:rgba(255,255,255,0.22)}
+.lb-nav.prev{left:14px}.lb-nav.next{right:14px}
+.lb-info{position:absolute;bottom:0;left:0;padding:24px 28px;pointer-events:none;max-width:380px}
+.lb-name{color:#fff;font-size:16px;font-weight:500;margin-bottom:4px;text-shadow:0 1px 4px rgba(0,0,0,0.8)}
+.lb-date{color:rgba(255,255,255,0.7);font-size:12px;margin-bottom:2px;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
+.lb-folder{font-size:12px;margin-bottom:8px;color:rgba(255,255,255,0.7);pointer-events:all;cursor:pointer;display:inline-block;text-shadow:0 1px 3px rgba(0,0,0,0.8)}
+.lb-folder:hover{color:#fff;text-decoration:underline}
+.lb-tags{display:flex;gap:4px;flex-wrap:wrap;pointer-events:all}
+.lb-tag{font-size:10px;padding:2px 8px;border-radius:100px;background:rgba(255,255,255,0.18);color:#fff;cursor:pointer}
+.lb-tag:hover{background:rgba(255,255,255,0.3)}
+.lb-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+.lb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:background 0.15s}
+.lb-dot.active{background:#fff}
+.empty{text-align:center;color:var(--text2);font-size:14px;padding:80px 20px;line-height:2}
+footer{padding:28px 20px;text-align:center;border-top:0.5px solid var(--border);font-size:13px;color:var(--text2);background:var(--bg3)}
+footer a{color:var(--info);text-decoration:none}
+footer a:hover{text-decoration:underline}
+@media(max-width:640px){
+  .sidebar{display:none}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .content{padding:12px}
+  .header{padding:12px 16px}
+  .search-box{width:130px}
+  .tag-bar{padding:8px 12px}
+  .lb-inner{padding:48px 14px}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <span class="logo" onclick="setFolder('Tümü')">Happy Archive</span>
+  <input class="search-box" type="text" placeholder="Ara..." id="searchInput" oninput="render()">
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebarEl"></aside>
+  <div class="main">
+    <div class="breadcrumb" id="breadcrumbEl"></div>
+    <div class="tag-bar" id="tagBarEl"></div>
+    <div class="content" id="contentEl"></div>
+  </div>
+</div>
+<footer>
+  <p>Arşivime katkıda bulunmak için Instagram'da <a href="https://instagram.com/happygraff_pg" target="_blank">@happygraff_pg</a> hesabına yazabilirsiniz.</p>
+</footer>
+
+<script src="data.js"></script>
+<script>
+let allTags=(window.__ARCHIVE_DATA__||{}).allTags||[]
+let folderTree=(window.__ARCHIVE_DATA__||{}).folderTree||[]
+let files=((window.__ARCHIVE_DATA__||{}).files||[]).filter(f=>f.published!==false)
+let state={folder:'Tümü',activeTags:[],search:'',lightbox:null,lbSlide:0}
+let collapsedIds=new Set()
+
+function getAllFolderPaths(nodes,prefix=''){let p=[];nodes.forEach(n=>{const path=prefix?prefix+'/'+n.name:n.name;p.push(path);if(n.children&&n.children.length)p=p.concat(getAllFolderPaths(n.children,path))});return p}
+function tagStyle(name){return allTags.find(x=>x.name===name)||{dot:'#378ADD',bg:'#E6F1FB',color:'#185FA5'}}
+function isVideo(name){return ['mp4','mov','avi','mkv'].includes((name||'').split('.').pop().toLowerCase())}
+
+function toggleNode(id){
+  if(collapsedIds.has(id))collapsedIds.delete(id);else collapsedIds.add(id)
+  function mark(nodes){nodes.forEach(n=>{n.collapsed=collapsedIds.has(n.id);if(n.children)mark(n.children)})}
+  mark(folderTree);renderSidebar()
+}
+
+function renderFolderNodes(nodes,prefix='',depth=0){
+  let h=''
+  nodes.forEach(n=>{
+    const path=prefix?prefix+'/'+n.name:n.name
+    const hasChildren=n.children&&n.children.length>0
+    const cnt=files.filter(f=>f.folder===path||f.folder.startsWith(path+'/')).length
+    const indent=depth*14
+    const toggle=hasChildren?`<button class="sb-toggle${n.collapsed?'':' open'}" onclick="event.stopPropagation();toggleNode(${n.id})">›</button>`:`<span class="sb-space"></span>`
+    h+=`<div class="sb-item${state.folder===path?' active':''}" style="padding-left:${8+indent}px" onclick="setFolder('${path}')">
+      ${toggle}<span>${hasChildren?'📁':'📂'}</span>
+      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${n.name}</span>
+      <span class="sb-badge">${cnt}</span>
+    </div>`
+    if(hasChildren&&!n.collapsed)h+=renderFolderNodes(n.children,path,depth+1)
+  })
+  return h
+}
+
+function renderSidebar(){
+  const el=document.getElementById('sidebarEl')
+  let h=`<div class="sb-title">Klasörler</div>`
+  h+=`<div class="sb-item${state.folder==='Tümü'?' active':''}" onclick="setFolder('Tümü')"><span class="sb-space"></span><span>🗂️</span><span style="flex:1">Tümü</span><span class="sb-badge">${files.length}</span></div>`
+  h+=renderFolderNodes(folderTree)
+  h+=`<div class="sb-title" style="margin-top:8px">Etiketler</div>`
+  h+=`<div class="sb-item${state.activeTags.length===0?' active':''}" onclick="clearTags()"><span class="sb-space"></span><span style="flex:1">Tümü</span><span class="sb-badge">${files.length}</span></div>`
+  allTags.forEach(t=>{
+    const c=files.filter(f=>f.tags&&f.tags.includes(t.name)).length
+    const isA=state.activeTags.includes(t.name)
+    h+=`<div class="sb-item${isA?' active':''}" onclick="toggleTag('${t.name}')"><span class="sb-space"></span><span class="tag-dot" style="background:${t.dot}"></span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.name}</span><span class="sb-badge">${c}</span></div>`
+  })
+  el.innerHTML=h
+}
+
+function renderTagBar(){
+  const el=document.getElementById('tagBarEl')
+  let h=`<span style="font-size:12px;color:var(--text2);margin-right:4px">Etiket:</span>`
+  const allA=state.activeTags.length===0
+  h+=`<span class="tag-pill${allA?' active':''}" style="${allA?'background:#EAF3DE;color:#3B6D11;border-color:transparent;font-weight:500':''}" onclick="clearTags()">Tümü</span>`
+  allTags.forEach(t=>{
+    const isA=state.activeTags.includes(t.name)
+    h+=`<span class="tag-pill${isA?' active':''}" style="${isA?`background:${t.bg};color:${t.color};border-color:transparent;font-weight:500`:''}" onclick="toggleTag('${t.name}')">${t.name}</span>`
+  })
+  el.innerHTML=h
+}
+
+function renderBreadcrumb(){
+  const el=document.getElementById('breadcrumbEl')
+  if(state.folder==='Tümü'){el.innerHTML=`<span class="bc-cur">Tümü</span>`;return}
+  const parts=state.folder.split('/')
+  let h=`<span class="bc-link" onclick="setFolder('Tümü')">Tümü</span>`
+  parts.forEach((p,i)=>{
+    h+=`<span class="bc-sep">›</span>`
+    if(i===parts.length-1)h+=`<span class="bc-cur">${p}</span>`
+    else h+=`<span class="bc-link" onclick="setFolder('${parts.slice(0,i+1).join('/')}')">${p}</span>`
+  })
+  el.innerHTML=h
+}
+
+function getFiltered(){return files.filter(f=>{
+  const fm=state.folder==='Tümü'||f.folder===state.folder||f.folder.startsWith(state.folder+'/')
+  const tm=state.activeTags.length===0||state.activeTags.every(t=>f.tags&&f.tags.includes(t))
+  const sm=!state.search||f.name.toLowerCase().includes(state.search.toLowerCase())
+  return fm&&tm&&sm
+})}
+
+function renderContent(){
+  const el=document.getElementById('contentEl'),list=getFiltered()
+  if(!list.length){el.innerHTML=`<div class="empty">Bu kriterlere uygun içerik bulunamadı.</div>`;return}
+  let h=`<div class="grid">`
+  list.forEach(f=>{
+    const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="card-tag" style="background:${s.bg};color:${s.color}">${t}</span>`}).join('')
+    const first=f.media&&f.media.length>0?f.media[0]:null
+    let thumbHtml=first&&first.webPath
+      ?(isVideo(first.name)?`<video class="card-thumb" src="${first.webPath}" muted playsinline></video>`:`<img class="card-thumb" src="${first.webPath}" alt="${f.name}" loading="lazy">`)
+      :`<div class="card-thumb-placeholder">${isVideo(f.name)?'🎬':'🖼️'}</div>`
+    const cnt=f.media&&f.media.length>1?`<div class="card-count">+${f.media.length-1}</div>`:''
+    h+=`<div class="card" onclick="openLightbox(${f.id},0)">
+      <div class="card-thumb-wrap">${thumbHtml}${cnt}</div>
+      <div class="card-body">
+        <div class="card-name">${f.name}</div>
+        <div class="card-folder" onclick="event.stopPropagation();setFolder('${f.folder}')">${f.folder}</div>
+        <div class="card-meta">${f.date||''}</div>
+        <div class="card-tags">${tH}</div>
+      </div>
+    </div>`
+  })
+  h+=`</div>`;el.innerHTML=h
+}
+
+function openLightbox(id,slide){const f=files.find(x=>x.id===id);if(!f||!f.media||!f.media.length)return;state.lightbox=id;state.lbSlide=slide||0;renderLightbox()}
+function closeLightbox(){state.lightbox=null;renderLightbox()}
+function lbGoTag(tag){closeLightbox();state.activeTags=[tag];state.folder='Tümü';render()}
+function lbGoFolder(folder){closeLightbox();setFolder(folder)}
+function renderLightbox(){
+  let lb=document.getElementById('lbEl')
+  if(!state.lightbox){if(lb)lb.remove();return}
+  const f=files.find(x=>x.id===state.lightbox);if(!f){if(lb)lb.remove();return}
+  if(!lb){lb=document.createElement('div');lb.id='lbEl';lb.className='lightbox';document.body.appendChild(lb)}
+  const media=f.media||[],idx=Math.max(0,Math.min(state.lbSlide,media.length-1)),m=media[idx]
+  const src=m.webPath||''
+  const mediaEl=isVideo(m.name)?`<video src="${src}" controls style="max-width:100%;max-height:100%;object-fit:contain"></video>`:`<img src="${src}" style="max-width:100%;max-height:100%;object-fit:contain" alt="${f.name}">`
+  const prev=media.length>1&&idx>0?`<button class="lb-nav prev" onclick="lbGo(${idx-1})">‹</button>`:''
+  const next=media.length>1&&idx<media.length-1?`<button class="lb-nav next" onclick="lbGo(${idx+1})">›</button>`:''
+  const dots=media.length>1?`<div class="lb-dots">${media.map((_,i)=>`<span class="lb-dot${i===idx?' active':''}" onclick="lbGo(${i})"></span>`).join('')}</div>`:''
+  const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="lb-tag" style="background:${s.bg}55;color:#fff" onclick="lbGoTag('${t.name}')">${t.name}</span>`}).join('')
+  lb.innerHTML=`<div class="lb-inner">${mediaEl}<button class="lb-close" onclick="closeLightbox()">✕</button>${prev}${next}<div class="lb-info"><div class="lb-name">${f.name}</div><div class="lb-date">${f.date||''}</div><div class="lb-folder" onclick="lbGoFolder('${f.folder}')">${f.folder}</div><div class="lb-tags">${tH}</div></div>${dots}</div>`
+  lb.onclick=e=>{if(e.target===lb)closeLightbox()}
+}
+function lbGo(i){state.lbSlide=i;renderLightbox()}
+function setFolder(f){state.folder=f;render()}
+function toggleTag(t){state.activeTags=state.activeTags.includes(t)?state.activeTags.filter(x=>x!==t):[...state.activeTags,t];render()}
+function clearTags(){state.activeTags=[];render()}
+function render(){state.search=document.getElementById('searchInput').value;renderSidebar();renderTagBar();renderBreadcrumb();renderContent()}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeLightbox()
+  if(e.key==='ArrowLeft'&&state.lightbox){const f=files.find(x=>x.id===state.lightbox);if(f&&f.media&&state.lbSlide>0)lbGo(state.lbSlide-1)}
+  if(e.key==='ArrowRight'&&state.lightbox){const f=files.find(x=>x.id===state.lightbox);if(f&&f.media&&state.lbSlide<f.media.length-1)lbGo(state.lbSlide+1)}
+})
+render()
+</script>
+</body>
+</html>
