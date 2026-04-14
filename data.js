@@ -177,19 +177,20 @@ window.__ARCHIVE_DATA__ = {
       "collapsed": false
     },
     {
-      "id": 4,
-      "name": "2026 Bostancı Hof",
-      "children": [],
-      "collapsed": false
-    },
-    {
       "id": 5,
       "name": "Etkinlik",
       "children": [
         {
           "id": 6,
           "name": "Hof",
-          "children": [],
+          "children": [
+            {
+              "id": 4,
+              "name": "2026 Bostancı Hof",
+              "children": [],
+              "collapsed": false
+            }
+          ],
           "collapsed": false
         }
       ],
@@ -197,5 +198,5 @@ window.__ARCHIVE_DATA__ = {
     }
   ],
   "files": [],
-  "exportedAt": "2026-04-14T17:13:23.513Z"
+  "exportedAt": "2026-04-14T17:39:21.048Z"
 };
