@@ -9,21 +9,27 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#fafaf9;--bg2:#f5f5f4;--bg3:#fff;--text:#1a1a1a;--text2:#6b7280;--text3:#9ca3af;--info:#2563eb;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--rad:8px;--radl:12px;--sb-w:220px}
 @media(prefers-color-scheme:dark){:root{--bg:#111;--bg2:#1c1c1e;--bg3:#2c2c2e;--text:#f2f2f7;--text2:#8e8e93;--text3:#636366;--info:#60a5fa;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14)}}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
-.header{padding:14px 24px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg3);position:sticky;top:0;z-index:10}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.header{padding:14px 24px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg3);flex-shrink:0}
 .header-left{display:flex;align-items:center;gap:10px}
 .logo{font-family:'Great Vibes',cursive;font-size:28px;color:var(--text);white-space:nowrap;cursor:pointer;line-height:1}
-.sidebar-toggle{background:none;border:0.5px solid var(--border2);border-radius:var(--rad);padding:5px 9px;cursor:pointer;color:var(--text2);font-size:14px;display:flex;align-items:center;gap:5px;transition:background 0.1s;white-space:nowrap}
+.sidebar-toggle{background:none;border:0.5px solid var(--border2);border-radius:var(--rad);padding:5px 9px;cursor:pointer;color:var(--text2);font-size:14px;display:flex;align-items:center;gap:5px;transition:background 0.1s}
 .sidebar-toggle:hover{background:var(--bg2)}
 .search-box{font-size:13px;padding:6px 12px;border:0.5px solid var(--border2);border-radius:var(--rad);background:var(--bg2);color:var(--text);width:200px;outline:none}
 .search-box:focus{border-color:var(--info)}
-/* Layout */
-.layout{display:flex;flex:1;overflow:hidden}
-.sidebar{width:var(--sb-w);flex-shrink:0;border-right:0.5px solid var(--border);padding:8px;overflow-y:auto;background:var(--bg2);transition:width 0.2s,padding 0.2s,opacity 0.2s}
-.sidebar.collapsed{width:0;padding:0;opacity:0;overflow:hidden;border-right:none}
-.main{flex:1;overflow-y:auto;min-width:0;display:flex;flex-direction:column}
+.layout{display:flex;flex:1;overflow:hidden;min-height:0}
+/* Sidebar */
+.sidebar{width:var(--sb-w);flex-shrink:0;border-right:0.5px solid var(--border);background:var(--bg2);transition:width 0.2s,opacity 0.2s;display:flex;flex-direction:column;overflow:hidden}
+.sidebar.collapsed{width:0;opacity:0;overflow:hidden;border-right:none}
+.folder-section{overflow-y:auto;min-height:40px}
+/* H divider */
+.h-divider{height:5px;cursor:ns-resize;background:transparent;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-top:0.5px solid var(--border)}
+.h-divider::after{content:'';display:block;width:32px;height:3px;border-radius:2px;background:var(--border2);transition:background 0.15s}
+.h-divider:hover::after,.h-divider.dragging::after{background:var(--text3)}
+.tag-section{display:flex;flex-direction:column;overflow:hidden;flex:1;min-height:40px}
+.tag-list{overflow-y:auto;flex:1}
 /* Sidebar items */
-.sb-title{font-size:11px;font-weight:500;color:var(--text3);padding:6px 10px 3px;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap}
+.sb-title{font-size:11px;font-weight:500;color:var(--text3);padding:6px 10px 3px;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
 .sb-item{display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:var(--rad);cursor:pointer;font-size:13px;color:var(--text);transition:background 0.1s;user-select:none;min-width:0}
 .sb-item:hover{background:var(--bg3)}
 .sb-item.active{background:var(--bg3);font-weight:500}
@@ -32,17 +38,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sb-toggle.open{transform:rotate(90deg)}
 .sb-space{width:14px;flex-shrink:0}
 .tag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-/* Tag bar */
-.tag-bar{padding:10px 20px;border-bottom:0.5px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:var(--bg3)}
+.main{flex:1;overflow-y:auto;min-width:0;display:flex;flex-direction:column}
+.tag-bar{padding:10px 20px;border-bottom:0.5px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:var(--bg3);flex-shrink:0}
 .tag-pill{font-size:11px;padding:3px 10px;border-radius:100px;cursor:pointer;border:0.5px solid var(--border);background:var(--bg2);color:var(--text2);transition:all 0.1s;white-space:nowrap}
 .tag-pill:hover{border-color:var(--border2)}
 .tag-pill.active{border-color:transparent;font-weight:500}
-/* Breadcrumb */
-.breadcrumb{padding:10px 20px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:5px;font-size:13px;background:var(--bg3)}
+.breadcrumb{padding:10px 20px;border-bottom:0.5px solid var(--border);display:flex;align-items:center;gap:5px;font-size:13px;background:var(--bg3);flex-shrink:0}
 .bc-link{color:var(--info);cursor:pointer}.bc-link:hover{text-decoration:underline}
 .bc-sep{color:var(--text3)}.bc-cur{font-weight:500}
-/* Grid */
-.content{padding:20px;flex:1}
+.content{padding:20px;flex:1;overflow-y:auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .card{background:var(--bg3);border:0.5px solid var(--border);border-radius:var(--radl);overflow:hidden;cursor:pointer;transition:border-color 0.15s,transform 0.15s}
 .card:hover{border-color:var(--border2);transform:translateY(-2px)}
@@ -56,7 +60,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .card-meta{font-size:11px;color:var(--text2);margin-top:2px}
 .card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .card-tag{font-size:10px;padding:2px 7px;border-radius:100px}
-/* Lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:50;display:flex;align-items:center;justify-content:center}
 .lb-inner{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:56px 64px}
 .lb-inner img,.lb-inner video{max-width:100%;max-height:100%;object-fit:contain;display:block}
@@ -77,7 +80,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .lb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:background 0.15s}
 .lb-dot.active{background:#fff}
 .empty{text-align:center;color:var(--text2);font-size:14px;padding:80px 20px;line-height:2}
-footer{padding:28px 20px;text-align:center;border-top:0.5px solid var(--border);font-size:13px;color:var(--text2);background:var(--bg3)}
+footer{padding:22px 20px;text-align:center;border-top:0.5px solid var(--border);font-size:13px;color:var(--text2);background:var(--bg3);flex-shrink:0}
 footer a{color:var(--info);text-decoration:none}
 footer a:hover{text-decoration:underline}
 @media(max-width:640px){
@@ -87,7 +90,6 @@ footer a:hover{text-decoration:underline}
   .content{padding:12px}
   .header{padding:12px 16px}
   .search-box{width:130px}
-  .tag-bar{padding:8px 12px}
   .lb-inner{padding:48px 14px}
 }
 </style>
@@ -101,7 +103,15 @@ footer a:hover{text-decoration:underline}
   <input class="search-box" type="text" placeholder="Ara..." id="searchInput" oninput="render()">
 </header>
 <div class="layout">
-  <aside class="sidebar" id="sidebarEl"></aside>
+  <aside class="sidebar" id="sidebarEl">
+    <div class="sb-title">Klasörler</div>
+    <div class="folder-section" id="folderSection"></div>
+    <div class="h-divider" id="hDivider"></div>
+    <div class="tag-section">
+      <div class="sb-title">Etiketler</div>
+      <div class="tag-list" id="tagList"></div>
+    </div>
+  </aside>
   <div class="main">
     <div class="breadcrumb" id="breadcrumbEl"></div>
     <div class="tag-bar" id="tagBarEl"></div>
@@ -119,18 +129,34 @@ let folderTree=(window.__ARCHIVE_DATA__||{}).folderTree||[]
 let files=((window.__ARCHIVE_DATA__||{}).files||[]).filter(f=>f.published!==false)
 let state={folder:'Tümü',activeTags:[],search:'',lightbox:null,lbSlide:0,sidebarOpen:true}
 let collapsedIds=new Set()
+let folderH=240
+const FOLDER_MIN=40
+
+// ── h-divider sürükle ──
+;(function(){
+  const div=document.getElementById('hDivider')
+  const fs=document.getElementById('folderSection')
+  let dragging=false,startY=0,startH=0
+  function maxH(){
+    const sb=document.getElementById('sidebarEl')
+    return sb.clientHeight*0.78
+  }
+  function applyH(){fs.style.height=folderH+'px';fs.style.maxHeight=folderH+'px'}
+  function start(y){dragging=true;startY=y;startH=folderH;div.classList.add('dragging');document.body.style.cursor='ns-resize';document.body.style.userSelect='none'}
+  function move(y){if(!dragging)return;folderH=Math.min(maxH(),Math.max(FOLDER_MIN,startH+(y-startY)));applyH()}
+  function end(){dragging=false;div.classList.remove('dragging');document.body.style.cursor='';document.body.style.userSelect=''}
+  div.addEventListener('mousedown',e=>{start(e.clientY);e.preventDefault()})
+  window.addEventListener('mousemove',e=>{move(e.clientY)})
+  window.addEventListener('mouseup',end)
+  div.addEventListener('touchstart',e=>{start(e.touches[0].clientY);e.preventDefault()},{passive:false})
+  window.addEventListener('touchmove',e=>{if(dragging)move(e.touches[0].clientY)},{passive:false})
+  window.addEventListener('touchend',end)
+  applyH()
+})()
 
 function toggleSidebar(){
   state.sidebarOpen=!state.sidebarOpen
-  const sb=document.getElementById('sidebarEl')
-  const btn=document.getElementById('sbToggleBtn')
-  if(state.sidebarOpen){
-    sb.classList.remove('collapsed')
-    btn.textContent='☰ Panel'
-  } else {
-    sb.classList.add('collapsed')
-    btn.textContent='☰ Panel'
-  }
+  document.getElementById('sidebarEl').classList.toggle('collapsed',!state.sidebarOpen)
 }
 
 function getAllFolderPaths(nodes,prefix=''){let p=[];nodes.forEach(n=>{const path=prefix?prefix+'/'+n.name:n.name;p.push(path);if(n.children&&n.children.length)p=p.concat(getAllFolderPaths(n.children,path))});return p}
@@ -162,18 +188,19 @@ function renderFolderNodes(nodes,prefix='',depth=0){
 }
 
 function renderSidebar(){
-  const el=document.getElementById('sidebarEl')
-  let h=`<div class="sb-title">Klasörler</div>`
-  h+=`<div class="sb-item${state.folder==='Tümü'?' active':''}" onclick="setFolder('Tümü')"><span class="sb-space"></span><span>🗂️</span><span style="flex:1">Tümü</span><span class="sb-badge">${files.length}</span></div>`
-  h+=renderFolderNodes(folderTree)
-  h+=`<div class="sb-title" style="margin-top:8px">Etiketler</div>`
-  h+=`<div class="sb-item${state.activeTags.length===0?' active':''}" onclick="clearTags()"><span class="sb-space"></span><span style="flex:1">Tümü</span><span class="sb-badge">${files.length}</span></div>`
+  const fl=document.getElementById('folderSection')
+  let fh=`<div class="sb-item${state.folder==='Tümü'?' active':''}" onclick="setFolder('Tümü')"><span class="sb-space"></span><span>🗂️</span><span style="flex:1">Tümü</span><span class="sb-badge">${files.length}</span></div>`
+  fh+=renderFolderNodes(folderTree)
+  fl.innerHTML=fh
+
+  const tl=document.getElementById('tagList')
+  let th=`<div class="sb-item${state.activeTags.length===0?' active':''}" onclick="clearTags()"><span class="sb-space"></span><span style="flex:1">Tümü</span><span class="sb-badge">${files.length}</span></div>`
   allTags.forEach(t=>{
     const c=files.filter(f=>f.tags&&f.tags.includes(t.name)).length
     const isA=state.activeTags.includes(t.name)
-    h+=`<div class="sb-item${isA?' active':''}" onclick="toggleTag('${t.name}')"><span class="sb-space"></span><span class="tag-dot" style="background:${t.dot}"></span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.name}</span><span class="sb-badge">${c}</span></div>`
+    th+=`<div class="sb-item${isA?' active':''}" onclick="toggleTag('${t.name}')"><span class="sb-space"></span><span class="tag-dot" style="background:${t.dot}"></span><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t.name}</span><span class="sb-badge">${c}</span></div>`
   })
-  el.innerHTML=h
+  tl.innerHTML=th
 }
 
 function renderTagBar(){
