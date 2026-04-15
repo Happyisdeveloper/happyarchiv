@@ -280,7 +280,7 @@ function renderLightbox(){
   const prev=media.length>1&&idx>0?`<button class="lb-nav prev" onclick="lbGo(${idx-1})">‹</button>`:''
   const next=media.length>1&&idx<media.length-1?`<button class="lb-nav next" onclick="lbGo(${idx+1})">›</button>`:''
   const dots=media.length>1?`<div class="lb-dots">${media.map((_,i)=>`<span class="lb-dot${i===idx?' active':''}" onclick="lbGo(${i})"></span>`).join('')}</div>`:''
-  const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="lb-tag" style="background:${s.bg}55;color:#fff" onclick="lbGoTag('${t.name}')">${t.name}</span>`}).join('')
+  const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="lb-tag" style="background:${s.bg}55;color:#fff" onclick="lbGoTag('${t}')">${t}</span>`}).join('')
   lb.innerHTML=`<div class="lb-inner">${mediaEl}<button class="lb-close" onclick="closeLightbox()">✕</button>${prev}${next}<div class="lb-info"><div class="lb-name">${f.name}</div><div class="lb-date">${f.date||''}</div><div class="lb-folder" onclick="lbGoFolder('${f.folder}')">${f.folder}</div><div class="lb-tags">${tH}</div></div>${dots}</div>`
   lb.onclick=e=>{if(e.target===lb)closeLightbox()}
 }
