@@ -180,7 +180,7 @@ function renderFolderNodes(nodes,prefix='',depth=0){
   nodes.forEach(n=>{
     const path=prefix?prefix+'/'+n.name:n.name
     const hasChildren=n.children&&n.children.length>0
-    const cnt=files.filter(f=>f.folder===path||f.folder.startsWith(path+'/')).length
+    const cnt=files.filter(f=>{const af=f.folders&&f.folders.length?f.folders:[f.folder].filter(Boolean);return af.some(fl=>fl===path||fl.startsWith(path+'/'))}).length
     const indent=depth*14
     const toggle=hasChildren?`<button class="sb-toggle${n.collapsed?'':' open'}" onclick="event.stopPropagation();toggleNode(${n.id})">›</button>`:`<span class="sb-space"></span>`
     h+=`<div class="sb-item${state.folder===path?' active':''}" style="padding-left:${8+indent}px" onclick="setFolder('${path}')">
@@ -235,7 +235,8 @@ function renderBreadcrumb(){
 }
 
 function getFiltered(){return files.filter(f=>{
-  const fm=state.folder==='Tümü'||f.folder===state.folder||f.folder.startsWith(state.folder+'/')
+  const allF=f.folders&&f.folders.length?f.folders:[f.folder].filter(Boolean)
+  const fm=state.folder==='Tümü'||allF.some(fl=>fl===state.folder||fl.startsWith(state.folder+'/'))
   const tm=state.activeTags.length===0||state.activeTags.every(t=>f.tags&&f.tags.includes(t))
   const sm=!state.search||f.name.toLowerCase().includes(state.search.toLowerCase())
   return fm&&tm&&sm
@@ -252,12 +253,14 @@ function renderContent(){
       ?(isVideo(first.name)?`<video class="card-thumb" src="${first.webPath}" muted playsinline></video>`:`<img class="card-thumb" src="${first.webPath}" alt="${f.name}" loading="lazy">`)
       :`<div class="card-thumb-placeholder">${isVideo(f.name)?'🎬':'🖼️'}</div>`
     const cnt=f.media&&f.media.length>1?`<div class="card-count">+${f.media.length-1}</div>`:''
+    const cardFolders=(f.folders&&f.folders.length?f.folders:[f.folder]).filter(Boolean)
+    const folderLinks=cardFolders.map(fl=>`<span class="card-folder" data-folder="${fl.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();setFolder(this.getAttribute('data-folder'))">${fl}</span>`).join(' · ')
     h+=`<div class="card" onclick="openLightbox(${f.id},0)">
       <div class="card-thumb-wrap">${thumbHtml}${cnt}</div>
       <div class="card-body">
         <div class="card-name">${f.name}</div>
-        <div class="card-folder" onclick="event.stopPropagation();setFolder('${f.folder}')">${f.folder}</div>
-        <div class="card-meta">${f.date||''}</div>
+        <div style="margin-top:2px">${folderLinks}</div>
+        <div class="card-meta">${f.date||''}${f.location?' · 📍 '+f.location:''}</div>
         <div class="card-tags">${tH}</div>
       </div>
     </div>`
@@ -281,7 +284,10 @@ function renderLightbox(){
   const next=media.length>1&&idx<media.length-1?`<button class="lb-nav next" onclick="lbGo(${idx+1})">›</button>`:''
   const dots=media.length>1?`<div class="lb-dots">${media.map((_,i)=>`<span class="lb-dot${i===idx?' active':''}" onclick="lbGo(${i})"></span>`).join('')}</div>`:''
   const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="lb-tag" style="background:${s.bg}55;color:#fff" onclick="lbGoTag('${t}')">${t}</span>`}).join('')
-  lb.innerHTML=`<div class="lb-inner">${mediaEl}<button class="lb-close" onclick="closeLightbox()">✕</button>${prev}${next}<div class="lb-info"><div class="lb-name">${f.name}</div><div class="lb-date">${f.date||''}</div><div class="lb-folder" onclick="lbGoFolder('${f.folder}')">${f.folder}</div><div class="lb-tags">${tH}</div></div>${dots}</div>`
+  const lbFolders=(f.folders&&f.folders.length?f.folders:[f.folder]).filter(Boolean)
+  const lbFolderLinks=lbFolders.map(fl=>`<span class="lb-folder" onclick="lbGoFolder('${fl.replace(/'/g,"\\'")}')">${fl}</span>`).join(' · ')
+  const lbLocation=f.location?`<div class="lb-date">📍 ${f.location}</div>`:''
+  lb.innerHTML=`<div class="lb-inner">${mediaEl}<button class="lb-close" onclick="closeLightbox()">✕</button>${prev}${next}<div class="lb-info"><div class="lb-name">${f.name}</div><div class="lb-date">${f.date||''}</div>${lbLocation}<div style="margin-bottom:6px">${lbFolderLinks}</div><div class="lb-tags">${tH}</div></div>${dots}</div>`
   lb.onclick=e=>{if(e.target===lb)closeLightbox()}
 }
 function lbGo(i){state.lbSlide=i;renderLightbox()}
