@@ -7,12 +7,6 @@ window.__ARCHIVE_DATA__ = {
       "color": "#854F0B"
     },
     {
-      "name": "Happy",
-      "dot": "#e6761e",
-      "bg": "#eac6a9",
-      "color": "#f4d8c2"
-    },
-    {
       "name": "Turbo",
       "dot": "#d8bb18",
       "bg": "#e6da99",
@@ -243,7 +237,7 @@ window.__ARCHIVE_DATA__ = {
   "files": [
     {
       "id": 1,
-      "name": "Reas.jpeg",
+      "name": "Reas",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Reas",
@@ -261,7 +255,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 2,
-      "name": "Hey Morik.jpeg",
+      "name": "Hey Morik",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -280,7 +274,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 3,
-      "name": "Opie.jpeg",
+      "name": "Opie",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Opie",
@@ -298,7 +292,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 4,
-      "name": "Rose.jpeg",
+      "name": "Rose",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Rose",
@@ -316,7 +310,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 5,
-      "name": "Cenk.jpeg",
+      "name": "Cenk",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -334,7 +328,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 6,
-      "name": "Toske.jpeg",
+      "name": "Toske",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -352,7 +346,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 7,
-      "name": "Kae.jpeg",
+      "name": "Kae",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -370,7 +364,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 8,
-      "name": "Sahstar.jpeg",
+      "name": "Sahstar",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -388,7 +382,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 9,
-      "name": "Hey Morik.jpeg",
+      "name": "Hey Morik",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -407,7 +401,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 10,
-      "name": "Pola.jpeg",
+      "name": "Pola",
       "folder": "Etkinlik/Hof/2025 Anatolian Walls Pendik Hof",
       "tags": [
         "Hof",
@@ -425,7 +419,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 11,
-      "name": "Kan ve Hey Morik.jpeg",
+      "name": "Kan ve Hey Morik",
       "folder": "Duvarlar",
       "tags": [
         "Karakter",
@@ -444,7 +438,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 12,
-      "name": "Happy ve Paps (Happs.jpeg",
+      "name": "Happy ve Paps (Happs)",
       "folder": "Duvarlarım",
       "tags": [
         "Happy",
@@ -462,7 +456,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 13,
-      "name": "sfsdfsdfs.jpeg",
+      "name": "Pg",
       "folder": "Duvarlarım",
       "tags": [
         "Happy",
@@ -470,7 +464,7 @@ window.__ARCHIVE_DATA__ = {
         "Karakter",
         "Paps"
       ],
-      "date": "16.04.2026",
+      "date": "08.03.2026",
       "size": "572 KB",
       "media": [
         {
@@ -490,7 +484,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 14,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Duvarlarım",
       "tags": [
         "Happy",
@@ -508,7 +502,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 15,
-      "name": "Happy ve Paps.jpeg",
+      "name": "Happy ve Paps",
       "folder": "Duvarlarım",
       "tags": [
         "Happy",
@@ -527,7 +521,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 16,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Duvarlarım",
       "tags": [
         "Happy",
@@ -545,7 +539,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 17,
-      "name": "Paps.jpeg",
+      "name": "Paps",
       "folder": "Paps/Duvarlar",
       "tags": [
         "Karakter",
@@ -590,7 +584,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 19,
-      "name": "Pg.jpeg",
+      "name": "Pg",
       "folder": "Duvarlarım",
       "tags": [
         "Happy",
@@ -609,7 +603,7 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 20,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
         "Happy",
@@ -629,10 +623,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 21,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew"
       ],
@@ -648,10 +641,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 22,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew",
         "Karakter",
@@ -669,10 +661,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 23,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew"
       ],
@@ -688,10 +679,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 24,
-      "name": "asfssafs.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew",
         "Karakter"
@@ -708,10 +698,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 25,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew",
         "Karakter"
@@ -728,10 +717,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 26,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew"
       ],
@@ -747,10 +735,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 27,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew"
       ],
@@ -766,10 +753,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 28,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -784,10 +770,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 29,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Karakter"
       ],
@@ -803,10 +788,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 30,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Karakter"
       ],
@@ -822,10 +806,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 31,
-      "name": "sfsafsaa.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "24.02.2026",
@@ -840,10 +823,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 32,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Pg Crew"
       ],
@@ -859,10 +841,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 33,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Karakter"
       ],
@@ -878,10 +859,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 34,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Karakter"
       ],
@@ -897,10 +877,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 35,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -915,10 +894,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 36,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "15.04.2026",
@@ -933,10 +911,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 37,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -951,11 +928,10 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 38,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
         "Favori",
-        "Happy",
         "Sketch",
         "Tag",
         "Sahstar"
@@ -972,10 +948,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 39,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -990,10 +965,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 40,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -1008,10 +982,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 41,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Karakter"
       ],
@@ -1027,10 +1000,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 42,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "15.04.2026",
@@ -1045,10 +1017,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 43,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "15.04.2026",
@@ -1063,10 +1034,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 44,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch",
         "Karakter"
       ],
@@ -1082,10 +1052,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 45,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -1100,10 +1069,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 46,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -1118,10 +1086,9 @@ window.__ARCHIVE_DATA__ = {
     },
     {
       "id": 47,
-      "name": "Happy.jpeg",
+      "name": "Happy",
       "folder": "Black Book'um",
       "tags": [
-        "Happy",
         "Sketch"
       ],
       "date": "01.01.0001",
@@ -1135,5 +1102,5 @@ window.__ARCHIVE_DATA__ = {
       "published": true
     }
   ],
-  "exportedAt": "2026-04-16T00:11:14.139Z"
+  "exportedAt": "2026-04-16T23:07:21.647Z"
 };
