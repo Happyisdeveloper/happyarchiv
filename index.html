@@ -246,7 +246,7 @@ function renderContent(){
   if(!list.length){el.innerHTML=`<div class="empty">Bu kriterlere uygun içerik bulunamadı.</div>`;return}
   let h=`<div class="grid">`
   list.forEach(f=>{
-    const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="card-tag" style="background:${s.bg};color:${s.color}">${t}</span>`}).join('')
+    const tH=(f.tags||[]).map(t=>{const s=tagStyle(t);return `<span class="card-tag" style="background:${s.bg};color:${s.color};cursor:pointer" onclick="event.stopPropagation();toggleTag('${t}')">${t}</span>`}).join('')
     const first=f.media&&f.media.length>0?f.media[0]:null
     let thumbHtml=first&&first.webPath
       ?(isVideo(first.name)?`<video class="card-thumb" src="${first.webPath}" muted playsinline></video>`:`<img class="card-thumb" src="${first.webPath}" alt="${f.name}" loading="lazy">`)
